@@ -20,6 +20,13 @@ module.exports = {
 		    
 		}else {  
 			content = fs.readFileSync(input, 'utf8'); 
+
+			var lines   = content.split('\n');
+			if (lines.length != 5) {
+				console.error('The input file does not have the right format');
+		        process.exit(1);
+			}
+			
 		    return content;
 
 		}

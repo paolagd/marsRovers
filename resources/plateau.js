@@ -9,7 +9,7 @@ module.exports = {
 	},
 	checkPlateauLimits: function(plateau, x, y){
 
-		if (plateau.x < x || plateau.y < y){ 
+		if (plateau.x < x || plateau.y < y || y < 0 || x < 0 ){ 
 			console.error('The rover cannot move further.');
 	        process.exit(1); 
 		} 

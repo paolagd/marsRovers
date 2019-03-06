@@ -30,6 +30,12 @@ module.exports = {
     var rovers = [];
     for (var i = 1; i < input.length; i = i + 2 ) {
       var position     = input[i].split(" "); 
+      
+      if (position[0] == null || position[1] == null || position[2]  == null || input[i+1] == null){
+        console.error('There is information missing, unable to deploy the rovers');
+        process.exit(1);  
+      }
+
       rovers.push( new this.Rover(position[0], position[1], position[2], input[i+1])); 
     } 
 

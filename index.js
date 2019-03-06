@@ -4,11 +4,12 @@ var fileManager     = require("./resources/fileManager.js");
 
 function main(){
 	 
-	var content = fileManager.readFile();  
+	var content = fileManager.readFile(false);  
 	var lines   = content.split('\n');
 	//Splitting the variables
 	var plateauBoundaries = lines[0].split(" ");
 	//Defining plateau
+	plateauOb.validateBoundaries(plateauBoundaries[0], plateauBoundaries[1]);
 	var plateau  		  = plateauOb.createPlateau(plateauBoundaries[0], plateauBoundaries[1]);
 	//Initializing rovers
 	var rovers 			  = roverOb.createRovers(lines);
@@ -17,8 +18,7 @@ function main(){
 
 	console.log( "WOHO! The rovers have successfully navigated the plateau! These are the final coordinates: \n Rover 1: " + rovers[0].x + " " + rovers[0].y + " " + rovers[0].orientation + "\n Rover 2: " + rovers[1].x + " " + rovers[1].y + " " + rovers[1].orientation );
 	
-	fileManager.writeFile(rovers);
-    
+	fileManager.writeFile(rovers); 
 }
 
 main();

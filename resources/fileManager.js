@@ -2,22 +2,24 @@
 
 module.exports = {
 
-	readFile: function() {
+	readFile: function(test) { 
 
 		var content;
+		var input;
 		var fs = require('fs');
 
-		if (process.argv.length !== 3) {
+		if(!test && process.argv.length !== 3) {
 		    console.error('One more argument is required. (Ex. node test.js input.txt)');
 		    process.exit(1);
 		}
 
-		var input = process.argv[2]; 
+		if(test) input = "input.txt"; else input = process.argv[2]; 
 
 		if (!fs.existsSync(input)) {
 
 		    console.error('The input file: "' + input + '" does not exist.');
-		    
+		     process.exit(1);
+		     
 		}else {  
 			content = fs.readFileSync(input, 'utf8'); 
 

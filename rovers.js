@@ -15,8 +15,7 @@ module.exports = {
       this.y = y - 1;
     };
 
-    this.moveLeft = function(x) {
-      console.log(x);
+    this.moveLeft = function(x) { 
       this.x = x - 1;
     };
 
@@ -45,10 +44,10 @@ module.exports = {
  
       var instructions = rovers[i].instructions;
       var newOrientation;
-
+ 
       instructions = instructions.split("");
 
-      for (var e = 0; e < instructions.length; e++) {
+      for (var e = 0; e < instructions.length; e++) { 
           
         if (instructions[e] == "L") {   
 
@@ -67,18 +66,55 @@ module.exports = {
           } 
  
         }else if (instructions[e] == "M"){ 
+  
+          if(rovers[i].orientation == "N"){
+
+            this.validateMovement(plateau, i, rovers, rovers[i].x, rovers[i].y+1);
+            rovers[i].moveUp(rovers[i].y);
+
+          }else if (rovers[i].orientation == "S"){
+
+            this.validateMovement(plateau, i, rovers,  rovers[i].x, rovers[i].y-1);
+            rovers[i].moveDown(rovers[i].y);
+
+          }else if (rovers[i].orientation == "E"){
+
+            this.validateMovement(plateau, i, rovers,  rovers[i].x+1, rovers[i].y);
+            rovers[i].moveRight(rovers[i].x);
+
+          }else if (rovers[i].orientation == "W"){
+
+            this.validateMovement(plateau, i, rovers,  rovers[i].x-1, rovers[i].y);
+            rovers[i].moveLeft(rovers[i].x); 
+
+          }  
  
-          if      (rovers[i].orientation == "N") rovers[i].moveUp(rovers[i].y);
-          else if (rovers[i].orientation == "S") rovers[i].moveDown(rovers[i].y);
-          else if (rovers[i].orientation == "E") rovers[i].moveRight(rovers[i].x);
-          else if (rovers[i].orientation == "W") rovers[i].moveLeft(rovers[i].x);
-           
         } 
  
       }   
 
     } 
 
-  }// end of explore function
+  },
+  validateMovement: function(plateau, roverI, rovers, x, y){
+    plateau.checkPlateauLimits(plateau, x, y);
+    this.checkCollision(roverI, rovers, x, y);
+
+  },
+  checkCollision: function(roverI, rovers, x, y){
+    if(roverI == 0)  
+
+      if (rovers[1].x == x && rovers[1].y == y) {
+        console.error('The rovers are stuck, if the rovers move there will be a collision.');
+        process.exit(1); 
+      } 
+    else 
+
+      if (rovers[0].x == x && rovers[0].y == y) {
+        console.error('The rovers are stuck, if the rovers move there will be a collision.');
+        process.exit(1); 
+      }  
+  }
+
     
 }

@@ -5,18 +5,15 @@ module.exports = {
 		this.x = x;
 	  	this.y = y; 
 		return this;
-		
+
 	},
-	checkPlateauLimits: function(x, y, plateau){
+	checkPlateauLimits: function(plateau, x, y){
 
-		if (plateau.x > x){
-			console.error('Te saliste del campo');
+		if (plateau.x < x || plateau.y < y){ 
+			console.error('The rover cannot move further.');
 	        process.exit(1); 
-		}else if (plateau.y > y){
-			console.error('Te saliste del campo');
-	        process.exit(1); 
-		}
-
+		} 
+		
 	}
 
 }

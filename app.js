@@ -1,7 +1,7 @@
 var plateauOb = require("./plateau.js");
 var roverOb   = require("./rovers.js");
 
-function explorePlateau(){
+function main(){
 
 	var fs = require('fs');
 
@@ -18,18 +18,18 @@ function explorePlateau(){
 	    console.error('The input file: "' + input + '" does not exist.');
 	    
 	}else { 
-		// Read the entire file creating an array of *****
+
 		fs.readFile(input, 'utf-8', function (err, content) {
 		    if (err) throw err;
  			
 			var lines = content.split('\n');
-
 			//Splitting the variables
 			var plateauBoundaries = lines[0].split(" ");
 			//Defining plateau
 			var plateau  		  = plateauOb.createPlateau(plateauBoundaries[0], plateauBoundaries[1]);
 			//Initializing rovers
-			var rovers = roverOb.createRovers(lines);
+			var rovers 			  = roverOb.createRovers(lines);
+			//Navigating plateau
 			roverOb.explorePlateau(plateau, rovers);
  		
 		    fs.writeFile(output, "asd", function (err) {
@@ -39,4 +39,4 @@ function explorePlateau(){
 	}
 }
 
-explorePlateau();
+main();

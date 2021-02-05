@@ -1,11 +1,5 @@
 # marsRovers
 
-In order to develop a solution writing clean code I decided to use OOP as much as possible.
-The main objects are the Plateau and Rovers. I have created a main file "index.js" to handle the requests as well as a FileManager to read and write the input and output files.
-
-The technologies used were Javascript, Node.js, Mocha.js and Chia.js.
-
-
 #Instructions
 - Clone the project.
 - Execute: npm install

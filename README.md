@@ -5,7 +5,6 @@ The main objects are the Plateau and Rovers. I have created a main file "index.j
 
 The technologies used were Javascript, Node.js, Mocha.js and Chia.js.
 
-I am fully aware that the testing section is lacking efficiency and was not very well structured. Unfortunately, I did not have as much free time as I would have liked to develop it properly.
 
 #Instructions
 - Clone the project.
